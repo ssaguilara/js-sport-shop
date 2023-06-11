@@ -28,7 +28,8 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 
-/* Navbar*/
+/* nav desktop*/
+
 nav {
   display: flex;
   font-size: var(--md);
@@ -113,9 +114,10 @@ nav {
   margin-right: 0.5rem;
 }
 
-/* Menu en mobile */
+/* nav mobile */
 
 .mobile-menu {
+  background-color: white;
   position: absolute;
   top: 60px;
   left: 0;
@@ -157,7 +159,51 @@ li .sign-out {
   color: var(--purple);
 }
 
+/* main */
 
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill , 25rem);
+  gap: 2rem;
+  place-content: center;
+  margin: 2rem 0.5rem 2rem 0.5rem;
+}
+.product-card {
+  width: 24rem;
+}
+.product-card img {
+  width: 24rem;
+  height: 24rem;
+  border-radius: 2rem;
+  object-fit: cover;
+}
+.product-card .product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+.product-card .product-info figure {
+  margin: 1rem;
+}
+.product-card .product-info figure img {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+.product-card .product-info div p:nth-child(1) {
+  font-weight: bold;
+  font-size: var(--md);
+  color: var(--black);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.product-card .product-info div p:nth-child(2) {
+  font-size: var(--sm);
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--black);
+}
 
 @media (max-width: 580px) {
   .icon-menu {
