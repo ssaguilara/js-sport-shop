@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --purple: #552583;
+  --yellow: #fab624;
+
+  --sm: 1.4rem;
+  --md: 1.6rem;
+  --lg: 1.8rem;
+}
+
+.inactive {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Navbar*/
+nav {
+  display: flex;
+  font-size: var(--md);
+  background-color: var(--purple);
+  justify-content: space-between;
+  padding: 0 2%;
+}
+
+.logo {
+  width: 100px;
+}
+
+.icon-menu {
+  display: none;
+  margin-left: 2%;
+  cursor: pointer;
+}
+
+.navbar-left {
+  display: flex;
+  margin-left: 2%;
+}
+
+.navbar-left ul,
+.navbar-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 6rem;
+  color: var(--white);
+}
+
+.navbar-left ul {
+  margin-left: 1.2rem;
+}
+
+.navbar-right ul {
+  margin-right: 1.2rem;
+}
+
+.navbar-left ul li a{
+  text-decoration: none;
+  color: var(--white);
+  border: 1px solid var(--purple);
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+
+.navbar-left ul li a:hover {
+  border: 1px solid var(--white);
+  color: var(--yellow);
+}
+
+.navbar-shopping-cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar-shopping-cart div {
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: var(--yellow);
+  color: var(--purple);
+  border-radius: 50%;
+  font-size: var(--sm);
+  font-weight: bold;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-search {
+  margin-right: 0.8rem;
+}
+
+.navbar-user {
+  margin-right: 0.5rem;
+}
+
+/* Menu en mobile */
+
+.mobile-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  padding-left: 2.4rem;
+  width: calc(100% - 2.4rem);
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: bold;
+}
+
+.mobile-menu ul {
+  padding: 0;
+  margin: 2.4rem 0 0;
+  list-style: none;
+}
+
+.mobile-menu-top li a:hover{
+ color: var(--yellow);
+}
+
+.mobile-menu ul:nth-child(1) {
+  border-bottom: 0.5rem solid var(--purple);
+}
+
+.mobile-menu ul li {
+  margin-bottom: 2.4rem;
+}
+
+li .email {
+  font-size: var(--sm);
+  font-weight: lighter;
+}
+
+li .sign-out {
+  font-size: var(--sm);
+  color: var(--purple);
+}
+
+
+
+@media (max-width: 580px) {
+  .icon-menu {
+    display: block;
+  }
+  .navbar-left ul {
+    display: none;
+  }
+
+}
+
+@media (min-width: 581px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+
+
+
