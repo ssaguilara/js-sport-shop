@@ -13,14 +13,9 @@ html {
   --black: #000000;
   --purple: #552583;
   --yellow: #fab624;
-
   --sm: 1.4rem;
   --md: 1.6rem;
   --lg: 1.8rem;
-}
-
-.inactive {
-  display: none;
 }
 
 body {
@@ -89,17 +84,17 @@ nav {
   cursor: pointer;
 }
 
-.navbar-shopping-cart div {
-  width: 1.4rem;
-  height: 1.4rem;
+.shopping-count{
+  width: 1.8rem;
+  height: 1.8rem;
   background-color: var(--yellow);
   color: var(--purple);
   border-radius: 50%;
   font-size: var(--sm);
   font-weight: bold;
   position: absolute;
-  bottom: 1.5rem;
-  left: 1rem;
+  bottom: 1.6rem;
+  left: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +109,6 @@ nav {
 }
 
 /* nav mobile */
-
 .mobile-menu {
   background-color: var(--white);
   position: absolute;
@@ -160,12 +154,12 @@ li .sign-out {
 
 /* aside */
 .product-shopping-detail {
-  background-color: var(--white);
-  width: 35rem;
-  padding: 1rem;
+  width: 30rem;
+  margin: 0.5rem;
   position: absolute;
   right: 0;
 }
+
 .title-container {
   display: flex;
   border-top: 0.5rem solid var(--purple);
@@ -173,42 +167,65 @@ li .sign-out {
   padding-top: 1rem;
   padding-bottom: 3rem;
   justify-content: center; 
+  background-color: var(--white);
 }
-.title-container img {
+
+.title-container .arrow {
   position: absolute;
-  left: 4rem;
+  left: 3.2rem;
+  cursor: pointer;
 }
+
 .title {
   font-size: var(--lg);
   font-weight: bold;
 }
+
+.order-content{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: var(--white);
+}
+
 .order {
   display: grid;
   grid-template-columns: auto 1fr;
   border-bottom: 0.5rem solid var(--purple);
   margin-bottom: 1rem;
-  border-radius: 0.8rem;
-  padding: 2rem;
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+  padding: 1.5rem;
+  background-color: var(--white);
 }
+
 .order p:nth-child(1) {
   display: flex;
   flex-direction: column;
 }
+
 .order p span:nth-child(1) {
   font-size: var(--md);
   font-weight: bold;
 }
+
 .order p:nth-child(2) {
   text-align: end;
   font-weight: bold;
   font-size: var(--lg);
+  margin-right: 2rem;
+  color: var(--purple);
 }
+
 .shopping-cart {
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   gap: 1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1.8rem;
   align-items: center;
+}
+
+.shopping-cart .close{
+  cursor: pointer;
 }
 
 .shopping-cart figure img {
@@ -217,14 +234,46 @@ li .sign-out {
   border-radius: 2rem;
   object-fit: cover;
 }
-.shopping-cart p:nth-child(2) {
+
+.shopping-cart div p:nth-child(1) {
   color: var(--black);
   font-size: var(--md);
+  font-weight: bold;
+  padding-bottom: 0.5rem;
 }
-.shopping-cart p:nth-child(3) {
-  font-size: var(--lg);
+
+.shopping-cart div p:nth-child(2) {
+  color: var(--black);
+  font-size: var(--sm);
+  padding-bottom: 0.5rem;
+}
+
+.shopping-cart div span:nth-child(4) {
+  display: inline-block;
+  font-size: var(--md);
+  width: 2rem;
+  height: 1rem;
+  text-align: center;
   font-weight: bold;
 }
+
+.shopping-cart div span:nth-child(3), .shopping-cart div span:nth-child(5) {
+  display: inline-block;
+  font-size: var(--lg);
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  border-radius: 0.4rem;
+  background-color: var(--purple);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.shopping-cart p:nth-child(3) {
+  font-size: var(--md);
+  font-weight: bold;
+}
+
 .primary-button {
   background-color: var(--purple);
   border-radius: 8px;
@@ -234,11 +283,10 @@ li .sign-out {
   cursor: pointer;
   font-size: var(--md);
   font-weight: bold;
-  height: 50px;
+  height: 4rem;
 }
 
 /* main */
-
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill , 25rem);
@@ -246,21 +294,25 @@ li .sign-out {
   place-content: center;
   margin: 2rem 0.5rem 2rem 0.5rem;
 }
+
 .product-card {
   width: 24rem;
 }
+
 .product-card img {
   width: 24rem;
   height: 24rem;
   border-radius: 2rem;
   object-fit: cover;
 }
+
 .product-card .product-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 12px;
 }
+
 .product-card .product-info figure {
   margin: 0;
 }
@@ -278,6 +330,7 @@ figure .add-shopping-cart{
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
+
 .product-card .product-info div p:nth-child(2) {
   font-size: var(--sm);
   margin-top: 0;
@@ -285,6 +338,9 @@ figure .add-shopping-cart{
   color: var(--black);
 }
 
+.inactive {
+  display: none;
+}
 
 @media (max-width: 580px) {
   .icon-menu {
@@ -302,6 +358,6 @@ figure .add-shopping-cart{
 
 @media (min-width: 581px) {
   .mobile-menu {
-    display: none;
+    display: none; 
   }
 }
