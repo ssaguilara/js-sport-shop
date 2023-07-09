@@ -1,6 +1,8 @@
-window.addEventListener("load", togglesCartShoppig);
+// SHOPPING CART-----------------------------------------------------------
 
+window.addEventListener("load", togglesCartShoppig);
 const menuIcon = document.querySelector(".icon-menu");
+const signOut = document.querySelector(".sign-out");
 const mobileMenu = document.querySelector(".mobile-menu");
 const shoppingCartIcon = document.querySelector(".navbar-shopping-cart");
 const productShoppingDetail = document.querySelector(
@@ -16,6 +18,7 @@ const productsLocalStorage = "productos";
 
 // nav icon events
 menuIcon.addEventListener("click", togglesMobileMenu);
+signOut.addEventListener("click", togglesMobileMenu);
 
 function togglesMobileMenu() {
   mobileMenu.classList.toggle("inactive");
@@ -45,6 +48,7 @@ function createAttributes() {
 for (let x = 0; x < btnAdd.length; x++) {
   btnAdd[x].addEventListener("click", () => {
     createAttributes();
+    productShoppingDetail.classList.remove("inactive");
     let infoProduct = productList[x];
     saveLocaStorage(infoProduct);
     shoppingCount.classList.remove("inactive");
@@ -96,8 +100,8 @@ function loadInfo() {
         <img src=${product.image}>
       </figure>
       <div> 
-        <p>Jersey</p>
         <p>${product.name}</p>
+        <p>${product.color}</p>
         <span onclick="subtract(${product.id})">-</span>
         <span>${product.amount}</span> 
         <span onclick="sum(${product.id})">+</span>
@@ -107,6 +111,7 @@ function loadInfo() {
     </div> 
   `;
   });
+
 }
 
 function amountCount() {
@@ -165,6 +170,8 @@ function clear() {
   orderContent.innerHTML = "";
 }
 
+// products quantity
+
 function sum(id) {
   let products = [];
   let productsSave = JSON.parse(localStorage.getItem(productsLocalStorage));
@@ -208,4 +215,69 @@ function subtract(id) {
   amountCount();
   totalPrice();
 }
+
+// SLIDER-----------------------------------------------------------
+
+const slider = document.querySelector(".slider");
+const sliderConteiner = document.querySelector("slider__conteiner");
+const sliders = [...document.querySelectorAll(".slider__body")];
+const arrowNext = document.querySelector("#next");
+const arrowBefore = document.querySelector("#before");
+const sliderButtonsContainer = document.querySelector('.slider__buttons-containt');
+
+const currentElement = Number(document.querySelector(".slider__body--show").dataset.id);
+
+
+
+let interval;
+
+// create buttons slider
+for (let i = 0; i < sliders.length; i++) {
+  const buttonSlide = document.createElement('button');
+  buttonSlide.setAttribute('class', 'button-slide')
+  sliderButtonsContainer.appendChild(buttonSlide);
+}
+const buttonsSlide = [...sliderButtonsContainer.querySelectorAll('.button-slide')];
+buttonsSlide[0].classList.add('active');
+
+// arrow buttons
+arrowNext.addEventListener("click", () => changePosition(1));
+arrowBefore.addEventListener("click", () => changePosition(-1));
+
+arrowNext.addEventListener("click", () => finishInterval);
+arrowBefore.addEventListener("click", () => finishInterval);
+  
+window.addEventListener('load', startInterval);
+
+function startInterval() {
+  interval = setInterval(() => {
+    changePosition(1)
+    console.log(currentElement)
+  }, 5000)
+}
+
+function finishInterval() {
+  clearInterval(interval);
+}
+
+
+function changePosition(change) {
+  clearInterval(interval)
+  let value = currentElement;
+  value += change;
+
+  if (value == -1 || value == sliders.length) {
+    value = (value == -1 ? sliders.length - 1 : 0)
+  }
+
+  sliders[currentElement].classList.toggle("slider__body--show");
+  buttonsSlide[currentElement].classList.toggle('active');
+
+  sliders[value].classList.toggle("slider__body--show");
+  buttonsSlide[value].classList.toggle('active');
+  startInterval();
+}
+
+
+
 
