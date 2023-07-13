@@ -30,7 +30,7 @@ nav {
   background-color: var(--black);
   justify-content: space-between;
   padding: 0 2%;
-  border-bottom: 2px solid var(--white);
+  border-bottom: 0.2rem solid var(--white);
   position: fixed;
   top: 0;
   left: 0;
@@ -118,6 +118,7 @@ nav {
   left: 0;
   padding-left: 2.4rem;
   width: 100%;
+  border-bottom: 0.2rem solid var(--black);
 }
 
 .mobile-menu a {
@@ -558,7 +559,144 @@ figure .add-shopping-cart{
   border-radius: 0.5rem;
 }
 
+.contact{
+  min-height: 80vh;
+  padding: 5%;
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.contact__title{
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 3rem;
+}
+
+.contact__container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 5rem;
+  background-color: var(--black);
+  width: 90%;
+}
+
+.contact__text{
+  justify-self: center;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  color: var(--white);
+}
+
+.contact__social{
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__social h1{
+  font-size: var(--lg);
+  margin-bottom: 1rem;
+}
+
+.contact__social p{
+  font-size: var(--sm);
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+
+.contact__social .contact__links {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.contact__social .contact__links i{
+ background-color: var(--white);
+ color: var(--black);
+ font-size: 3rem;
+ border-radius: 50%;
+ padding: 0.5rem; 
+ cursor: pointer;
+}
+
+.contact__information{
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.contact__icon{
+ font-size: 3rem;
+ margin-right: 1rem;
+}
+
+.contact__subtitle{
+  font-size: var(--md);
+}
+
+.contact__inf{
+  font-size: var(--sm);
+}
+
+.contact__form{
+  color: var(--black);
+  width: 100%;
+}
+
+.contact__content{
+  background-color: var(--white);
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+  min-width: 25rem;
+  max-width: 80%;
+}
+
+.contact__label{
+  font-size: var(--lg);
+  color: var(--black);
+  padding-left: 0.5rem;
+}
+
+.contact__input{
+  width: 100%;
+  background-color: var(--white);
+  font-size: var(--sm);
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: .5rem;
+}
+
+.contact__button{
+  display: inline-flex;
+  padding: 1rem;
+  min-width: 10rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  background-color: var(--yellow);
+  color: var(--black);
+  font-size: var(--md);
+  justify-content: center;
+}
+
+.contact__button i{
+  margin-left: 0.5rem;
+}
+
+footer p{
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  font-size: var(--sm);
+  padding: 0.5rem;
+  border-top: 0.2rem solid var(--white);
+}
 
 .inactive {
   display: none;
@@ -623,10 +761,6 @@ figure .add-shopping-cart{
     height: 4rem;
   }
 
-  /* .about{
-    padding: 5% 0px;
-  } */
-
   .about__container{
     grid-template-columns: 1fr;
     justify-content: center;
@@ -641,6 +775,37 @@ figure .add-shopping-cart{
 
   .about__text{
     justify-self: center;;
+  }
+
+  .contact__container{
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form{
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+
+  .contact__content{
+    width: 25rem;
+  }
+
+  .contact__text{
+    width: 25rem;
+    order: 2;
+  }
+
+  .contact__social h1{
+    text-align: center;
+  }
+
+  .contact__links{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem;
   }
 
 }

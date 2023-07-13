@@ -4,10 +4,9 @@ window.addEventListener("load", togglesCartShoppig);
 const menuIcon = document.querySelector(".icon-menu");
 const signOut = document.querySelector(".sign-out");
 const mobileMenu = document.querySelector(".mobile-menu");
+const mobileMenuTop = document.querySelectorAll(".mobile-menu-top li");
 const shoppingCartIcon = document.querySelector(".navbar-shopping-cart");
-const productShoppingDetail = document.querySelector(
-  ".product-shopping-detail"
-);
+const productShoppingDetail = document.querySelector(".product-shopping-detail");
 const btnAdd = document.querySelectorAll(".add-shopping-cart");
 const orderContent = document.querySelector(".order-content");
 const shoppingCount = document.querySelector(".shopping-count");
@@ -16,9 +15,10 @@ const arrowIcon = document.querySelector(".arrow");
 
 const productsLocalStorage = "productos";
 
-// nav icon events
+
 menuIcon.addEventListener("click", togglesMobileMenu);
 signOut.addEventListener("click", togglesMobileMenu);
+mobileMenuTop.forEach((element)=> element.addEventListener("click", togglesMobileMenu));
 
 function togglesMobileMenu() {
   mobileMenu.classList.toggle("inactive");
