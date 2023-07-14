@@ -1,4 +1,5 @@
 const cardsContainer = document.querySelector(".cards-container");
+window.addEventListener('load', productsList);
 
 const productList = [];
 productList.push({
@@ -144,66 +145,26 @@ productList.push({
 });
 
 
-
-//Metodo #1
-// for (product of productList) {
-//   const productCard = document.createElement("div");
-//   productCard.classList.add("product-card");
-
-//   const productImg = document.createElement("img");
-//   productImg.setAttribute("src", product.image);
-//   productImg.setAttribute("alt", product.name);
-
-//   const productInfo = document.createElement("div");
-//   productInfo.classList.add("product-info");
-
-//   const productInfoDiv = document.createElement("div");
-
-//   const productName = document.createElement("p");
-//   productName.innerText = product.name;
-
-//   const productPrice = document.createElement("p");
-//   productPrice.innerText = ` $ ${product.price},00`;
-
-//   productInfoDiv.appendChild(productPrice);
-//   productInfoDiv.appendChild(productName);
-
-//   const productInfoFigure = document.createElement("figure");
-//   const productImgCart = document.createElement("img");
-//   productImgCart.setAttribute("class", "add-shopping-cart");
-//   productImgCart.setAttribute("src", "../img/add.svg");
-//   productImgCart.setAttribute("alt", "../img/add.svg");
-
-
-//   productInfoFigure.appendChild(productImgCart);
-
-//   productInfo.append(productInfoDiv, productInfoFigure);
-
-//   productCard.append(productImg, productInfo);
-
-//   cardsContainer.appendChild(productCard);
-// }
-
-
-//Metodo #2
-for (product of productList) {
-  cardsContainer.innerHTML += `
-    <div class="product-card">
-        <img class="product-image" src=${product.image} alt="imagen ${product.name}">
-        <div class="product-info">
-          <div>
-            <p class="product-name">${product.name}</p>
-            <p class="product-name">${product.color}</p>
-            <p class="product-price">$ ${product.price},00</p>
-          </div>
-          <figure>
-            <img class="add-shopping-cart" src="../img/add.svg" alt="add shopping cart">
-          </figure>
-       </div>
-     </div>
-  `;
+function productsList() {
+  cardsContainer.innerHTML = ''
+  for (product of productList) {
+    cardsContainer.innerHTML += `
+      <div class="product-card">
+          <img class="product-image" src=${product.image} alt="imagen ${product.name}">
+          <div class="product-info">
+            <div>
+              <p class="product-name">${product.name}</p>
+              <p class="product-name">${product.color}</p>
+              <p class="product-price">$ ${product.price},00</p>
+            </div>
+            <figure>
+              <img class="add-shopping-cart" src="../img/add.svg" alt="add shopping cart">
+            </figure>
+        </div>
+      </div>
+    `;
+  }
 }
-
 
 
 

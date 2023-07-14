@@ -7,6 +7,8 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const mobileMenuTop = document.querySelectorAll(".mobile-menu-top li");
 const shoppingCartIcon = document.querySelector(".navbar-shopping-cart");
 const productShoppingDetail = document.querySelector(".product-shopping-detail");
+const shoppingSearchIcon = document.querySelector(".navbar-search");
+const searchShoppingDetail = document.querySelector(".search");
 const btnAdd = document.querySelectorAll(".add-shopping-cart");
 const orderContent = document.querySelector(".order-content");
 const shoppingCount = document.querySelector(".shopping-count");
@@ -17,24 +19,38 @@ const productsLocalStorage = "productos";
 
 
 menuIcon.addEventListener("click", togglesMobileMenu);
+menuIcon.addEventListener("click", productsList);
 signOut.addEventListener("click", togglesMobileMenu);
 mobileMenuTop.forEach((element)=> element.addEventListener("click", togglesMobileMenu));
 
 function togglesMobileMenu() {
   mobileMenu.classList.toggle("inactive");
   productShoppingDetail.classList.add("inactive");
+  searchShoppingDetail.classList.add("inactive");
 }
 
 shoppingCartIcon.addEventListener("click", togglesCartShoppig);
+shoppingCartIcon.addEventListener("click", productsList);
 arrowIcon.addEventListener("click", togglesCartShoppig);
 
 function togglesCartShoppig() {
   productShoppingDetail.classList.toggle("inactive");
   mobileMenu.classList.add("inactive");
+  searchShoppingDetail.classList.add("inactive");
   loadInfo();
   amountCount();
   totalPrice();
 }
+
+shoppingSearchIcon.addEventListener("click", togglesSearchShoppig);
+shoppingSearchIcon.addEventListener("click", productsList);
+
+function togglesSearchShoppig() {
+  searchShoppingDetail.classList.toggle("inactive");
+  mobileMenu.classList.add("inactive");
+  productShoppingDetail.classList.add("inactive");
+}
+
 
 // create id and amount attributes
 function createAttributes() {
@@ -216,6 +232,52 @@ function subtract(id) {
   totalPrice();
 }
 
+// product search
+
+const searchButton = document.querySelector('.search__button');
+searchButton.addEventListener('click', search);
+
+const searchForm = document.querySelector('.search__form');
+searchForm.addEventListener('keyup', (e) =>{
+  if (e.keyCode === 13) { 
+   search();
+  }
+});
+
+const searchReset = document.querySelector('.search__reset')
+searchReset.addEventListener('click', productsList);
+
+function search(){
+  
+  const productsSearch = productList.filter(product =>  product.name.toLowerCase() == searchForm.value.toLowerCase());
+  if(productsSearch.length == 0)
+  {
+    console.log("No se encuentra");
+  }else{
+  cardsContainer.innerHTML = ` `;
+  for (productSearch of productsSearch) {
+    cardsContainer.innerHTML += `
+      <div class="product-card">
+          <img class="product-image" src=${productSearch.image} alt="imagen ${productSearch.name}">
+          <div class="product-info">
+            <div>
+              <p class="product-name">${productSearch.name}</p>
+              <p class="product-name">${productSearch.color}</p>
+              <p class="product-price">$ ${productSearch.price},00</p>
+            </div>
+            <figure>
+              <img class="add-shopping-cart" src="../img/add.svg" alt="add shopping cart">
+            </figure>
+         </div>
+       </div>
+    `;
+  }
+
+}
+searchForm.value = ''
+}
+
+
 // SLIDER-----------------------------------------------------------
 
 const slider = document.querySelector(".slider");
@@ -252,7 +314,6 @@ window.addEventListener('load', startInterval);
 function startInterval() {
   interval = setInterval(() => {
     changePosition(1)
-    console.log(currentElement)
   }, 5000)
 }
 
