@@ -1,4 +1,5 @@
 // SHOPPING CART-----------------------------------------------------------
+productsList(productList);
 
 window.addEventListener("load", togglesCartShoppig);
 const menuIcon = document.querySelector(".icon-menu");
@@ -9,17 +10,16 @@ const shoppingCartIcon = document.querySelector(".navbar-shopping-cart");
 const productShoppingDetail = document.querySelector(".product-shopping-detail");
 const shoppingSearchIcon = document.querySelector(".navbar-search");
 const searchShoppingDetail = document.querySelector(".search");
-const btnAdd = document.querySelectorAll(".add-shopping-cart");
 const orderContent = document.querySelector(".order-content");
 const shoppingCount = document.querySelector(".shopping-count");
 const totalP = document.querySelector(".total-price");
 const arrowIcon = document.querySelector(".arrow");
+const productsSection = document.querySelector(".products");
 
 const productsLocalStorage = "productos";
 
-
 menuIcon.addEventListener("click", togglesMobileMenu);
-menuIcon.addEventListener("click", productsList);
+menuIcon.addEventListener('click', reset);
 signOut.addEventListener("click", togglesMobileMenu);
 mobileMenuTop.forEach((element)=> element.addEventListener("click", togglesMobileMenu));
 
@@ -30,7 +30,7 @@ function togglesMobileMenu() {
 }
 
 shoppingCartIcon.addEventListener("click", togglesCartShoppig);
-shoppingCartIcon.addEventListener("click", productsList);
+shoppingCartIcon.addEventListener('click', reset);
 arrowIcon.addEventListener("click", togglesCartShoppig);
 
 function togglesCartShoppig() {
@@ -43,7 +43,6 @@ function togglesCartShoppig() {
 }
 
 shoppingSearchIcon.addEventListener("click", togglesSearchShoppig);
-shoppingSearchIcon.addEventListener("click", productsList);
 
 function togglesSearchShoppig() {
   searchShoppingDetail.classList.toggle("inactive");
@@ -52,23 +51,10 @@ function togglesSearchShoppig() {
 }
 
 
-// create id and amount attributes
-function createAttributes() {
-  for (let index in productList) {
-    productList[index].id = parseInt(index);
-    productList[index].amount = 1;
-  }
-}
-
 // add icon event
-for (let x = 0; x < btnAdd.length; x++) {
-  btnAdd[x].addEventListener("click", () => {
-    createAttributes();
-    productShoppingDetail.classList.remove("inactive");
-    let infoProduct = productList[x];
-    saveLocaStorage(infoProduct);
-    shoppingCount.classList.remove("inactive");
-  });
+function addProduct(id) {
+  let infoProduct = productList[id];
+  saveLocaStorage(infoProduct);
 }
 
 function saveLocaStorage(infoProduct) {
@@ -127,7 +113,6 @@ function loadInfo() {
     </div> 
   `;
   });
-
 }
 
 function amountCount() {
@@ -232,20 +217,19 @@ function subtract(id) {
   totalPrice();
 }
 
-// product search
+// PRODUCT SEARCH-----------------------------------------------------------
 
 const searchButton = document.querySelector('.search__button');
-searchButton.addEventListener('click', search);
-
+const resetButton = document.querySelector('.search__reset');
 const searchForm = document.querySelector('.search__form');
+
+searchButton.addEventListener('click', search);
+resetButton.addEventListener('click', reset);
 searchForm.addEventListener('keyup', (e) =>{
   if (e.keyCode === 13) { 
    search();
   }
 });
-
-const searchReset = document.querySelector('.search__reset')
-searchReset.addEventListener('click', productsList);
 
 function search(){
   
@@ -255,26 +239,31 @@ function search(){
     console.log("No se encuentra");
   }else{
   cardsContainer.innerHTML = ` `;
-  for (productSearch of productsSearch) {
+  for (let i=0; i < productsSearch.length; i++) {
     cardsContainer.innerHTML += `
-      <div class="product-card">
-          <img class="product-image" src=${productSearch.image} alt="imagen ${productSearch.name}">
-          <div class="product-info">
-            <div>
-              <p class="product-name">${productSearch.name}</p>
-              <p class="product-name">${productSearch.color}</p>
-              <p class="product-price">$ ${productSearch.price},00</p>
-            </div>
-            <figure>
-              <img class="add-shopping-cart" src="../img/add.svg" alt="add shopping cart">
-            </figure>
-         </div>
-       </div>
+    <div class="product-card">
+        <img class="product-image" src=${productsSearch[i].image} alt="imagen ${productsSearch[i].name}">
+        <div class="product-info">
+          <div>
+            <p class="product-name">${productsSearch[i].name}</p>
+            <p class="product-name">${productsSearch[i].color}</p>
+            <p class="product-price">$ ${productsSearch[i].price},00</p>
+          </div>
+          <figure>
+            <img class="add-shopping-cart" onclick="addProduct(${productsSearch[i].id})" src="../img/add.svg" alt="add shopping cart">
+          </figure>
+      </div>
+    </div>
     `;
   }
-
 }
 searchForm.value = ''
+productsSection.scrollIntoView();
+}
+
+function reset(){
+  productsSection.scrollIntoView();
+  productsList(productList)
 }
 
 
@@ -288,7 +277,6 @@ const arrowBefore = document.querySelector("#before");
 const sliderButtonsContainer = document.querySelector('.slider__buttons-containt');
 
 const currentElement = Number(document.querySelector(".slider__body--show").dataset.id);
-
 
 
 let interval;

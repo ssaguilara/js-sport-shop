@@ -118,8 +118,10 @@ nav {
   top: 60px;
   left: 0;
   padding-left: 2.4rem;
-  width: 100%;
-  border-bottom: 0.2rem solid var(--black);
+  width: 25rem;
+  border-bottom: 0.5rem solid var(--purple);
+  border-top-right-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
 }
 
 .mobile-menu a {
@@ -139,7 +141,7 @@ nav {
 }
 
 .mobile-menu ul:nth-child(1) {
-  border-bottom: 0.5rem solid var(--purple);
+  border-bottom: 0.3rem solid var(--purple);
 }
 
 .mobile-menu ul li {
@@ -162,7 +164,7 @@ li .sign-out {
   margin: 0.5rem;
   position: fixed;
   top: 9%;
-  right: 2%;
+  right: 3%;
   z-index: 100;
 }
 
@@ -190,7 +192,7 @@ li .sign-out {
 }
 
 .order-content{
-  max-height: 54vh;
+  max-height: 50vh;
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: var(--white);
@@ -402,9 +404,8 @@ li .sign-out {
 }
 
 .slider__texts-1 div{
-  width: 60%;
+  width: 44rem;
 }
-
 
 .slider__texts-1{
   height: 100%;
@@ -417,10 +418,11 @@ li .sign-out {
 }
 
 .slider__title-1{
-  color: var(--);
-  font-size: 4rem;
+  color: var(--black);
+  font-size: 3.8rem;
   text-align: center;
   font-style: italic;
+  font-weight: 900;
 }
 
 .slider__subtitle-1{
@@ -769,11 +771,11 @@ footer p{
 }
 
 
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
   .slider__texts-1 div{
     width: 100%;
     }
-}
+} */
 
 @media screen and (max-width: 630px) {
   .icon-menu {
@@ -783,23 +785,22 @@ footer p{
     display: none;
   }
 
-  .product-shopping-detail {
-    width: 93%;
-  }
-
   .slider__body{
     height: 50vh;
   }
 
+  .slider__texts-1 div{
+    width: 100%;
+  }
+
   .slider__title-1{
-    font-size: 3rem;
+    font-size: 2.8rem;
+    
   }
   
   .slider__subtitle-1{
-    color: var(--white);
     font-size: 2rem;
   }
-
 
   .slider__title-2{
     font-size: 5rem;
@@ -876,6 +877,12 @@ footer p{
 
 }
 
+@media (min-width: 600px) and (max-height: 420px) {
+  .slider__body{
+    height: 100vh;
+  }
+}
+
 @media screen and (min-width: 631px) {
   .mobile-menu {
     display: none; 
@@ -885,7 +892,11 @@ footer p{
 @media screen and (max-width: 480px) {
   
   .slider__body{
-    height: 30vh;
+    height: 40vh;
+  }
+
+  .product-shopping-detail {
+    width: 92%;
   }
   
   .slider__title-1{
@@ -898,13 +909,8 @@ footer p{
 
   .slider__texts-1{
     height: 100%;
-    background: url(../img/slider1.png) 100% 50% no-repeat;
+    background: url(../img/slider1.png) 100% 30% no-repeat;
     background-size: contain;
-  }
-
-  .slider__subtitle-1{
-    color: var(--white);
-    font-size: 2rem;
   }
 
   .slider__title-2{

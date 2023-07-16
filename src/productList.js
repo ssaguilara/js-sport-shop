@@ -1,5 +1,5 @@
 const cardsContainer = document.querySelector(".cards-container");
-window.addEventListener('load', productsList);
+
 
 const productList = [];
 productList.push({
@@ -15,7 +15,6 @@ productList.push({
   price: 30,
   image:
     "https://images.unsplash.com/photo-1621369894408-e68031702f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
-  
 });
 productList.push({
   name: "Jacket",
@@ -144,27 +143,36 @@ productList.push({
     "https://images.unsplash.com/photo-1601046500409-1af2290deeaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=465&q=80",
 });
 
-
-function productsList() {
+function productsList(products) {
   cardsContainer.innerHTML = ''
-  for (product of productList) {
+  for (let i=0; i < products.length; i++) {
+
+    // create id and amount attributes
+    products[i].id = parseInt(i);
+    products[i].amount = 1;
+
+    //print html
     cardsContainer.innerHTML += `
       <div class="product-card">
-          <img class="product-image" src=${product.image} alt="imagen ${product.name}">
+          <img class="product-image" src=${products[i].image} alt="imagen ${products[i].name}">
           <div class="product-info">
             <div>
-              <p class="product-name">${product.name}</p>
-              <p class="product-name">${product.color}</p>
-              <p class="product-price">$ ${product.price},00</p>
+              <p class="product-name">${products[i].name}</p>
+              <p class="product-name">${products[i].color}</p>
+              <p class="product-price">$ ${products[i].price},00</p>
             </div>
             <figure>
-              <img class="add-shopping-cart" src="../img/add.svg" alt="add shopping cart">
+              <img class="add-shopping-cart" onclick="addProduct(${products[i].id})" src="../img/add.svg" alt="add shopping cart">
             </figure>
         </div>
       </div>
     `;
   }
+
 }
+
+
+
 
 
 
